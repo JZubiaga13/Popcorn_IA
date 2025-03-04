@@ -20,14 +20,12 @@ Popcorn_IA/
 │   ├── __init__.py             # Inicialización del módulo   
 │   ├── frontend.py             # Interfaz Streamlit   
 │   ├── popcorn.py              # API con FastAPI   
-│
-
+│   
 │── tests/   
 │   ├── pytest_cache/           # Caché de pytest   
 │   ├── pytest.ini              # Configuración de pytest   
 │   ├── test_popcorn.py         # Tests automatizados   
-│
-
+│   
 │── .dockerignore               # Archivos ignorados por Docker   
 │── .gitignore                  # Archivos ignorados en Git   
 │── Dockerfile                  # Configuración de Docker   
