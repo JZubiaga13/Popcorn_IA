@@ -2,7 +2,7 @@
 
 *"¿Alguna vez has pasado más tiempo eligiendo qué ver que viendo la película? Entonces, esto es para ti."*
 
-## 🎭 **¿Qué es Popcorn-IA?**
+## 🎭 **¿Qué es PopcornIA?**
 
 **Popcorn-IA** es un recomendador de películas inteligente que utiliza **Inteligencia Artificial y Procesamiento del Lenguaje Natural (NLP)** para sugerirte películas según **tus gustos o el contexto en el que te encuentres**.\
 🔹 ¿Buscas una peli para ver con amigos? 🎉\

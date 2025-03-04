@@ -22,6 +22,10 @@ st.markdown("""
             font-weight: normal;
             color: #444;
         }
+        .centered-img {
+            display: flex;
+            justify-content: center;
+        }
         .button-container {
             display: flex;
             justify-content: center;
@@ -47,6 +51,11 @@ st.markdown("""
 st.markdown("<h1 class='title'>🍿 PopcornIA</h1>", unsafe_allow_html=True)
 st.markdown("<p class='subtitle'>La herramienta que utiliza Inteligencia Artificial para recomendarte películas para cualquier ocasión</p>", unsafe_allow_html=True)
 
+# Mostrar imagen centrada
+st.markdown('<div class="centered-img">', unsafe_allow_html=True)
+st.image("logo.png", caption="",width=500)
+st.markdown("</div>", unsafe_allow_html=True)
+
 # Contenedor para los botones de selección
 st.markdown("<div class='button-container'>", unsafe_allow_html=True)
 col1, col2 = st.columns(2)
@@ -66,38 +75,38 @@ if "option" in st.session_state:
     option = st.session_state["option"]
 
     if option == "recomendador":
-            st.subheader("🎬 Personaliza tu recomendación")
-            
-            # Modo de recomendación
-            modo = st.radio("¿Cómo quieres recibir recomendaciones?", 
-                            ["Películas similares", "Por contexto", "Ambos"])
-            peliculas = None
-            contexto = None
+        st.subheader("🎬 Personaliza tu recomendación")
 
-            # Entrada de películas
-            if modo in ["Películas similares", "Ambos"]:
-                peliculas = st.text_input("Escribe 3-4 películas separadas por comas:")
+        # Modo de recomendación
+        modo = st.radio("¿Cómo quieres recibir recomendaciones?", 
+                        ["Películas similares", "Por contexto", "Ambos"])
+        peliculas = None
+        contexto = None
 
-            # Entrada de contexto
-            if modo in ["Por contexto", "Ambos"]:
-                contexto = st.text_area("Describe el tipo de película que buscas (ej. 'Para ver en pareja'):")
+        # Entrada de películas
+        if modo in ["Películas similares", "Ambos"]:
+            peliculas = st.text_input("Escribe 3-4 películas separadas por comas:")
 
-            # Botón para obtener recomendaciones
-            if st.button("🎥 Obtener Recomendaciones"):
-                if peliculas or contexto:
-                    payload = {
-                        "peliculas": [p.strip() for p in peliculas.split(",")] if peliculas else None,
-                        "contexto": contexto if contexto else None
-                    }
-                    response = requests.post(f"{API_URL}/recomendacion", json=payload)
+        # Entrada de contexto
+        if modo in ["Por contexto", "Ambos"]:
+            contexto = st.text_area("Describe el tipo de película que buscas (ej. 'Para ver en pareja'):")
 
-                    if response.status_code == 200:
-                        st.success("¡Aquí están tus recomendaciones!")
-                        st.write(response.json()["respuesta"])
-                    else:
-                        st.error("Error al obtener recomendaciones")
+        # Botón para obtener recomendaciones
+        if st.button("🎥 Obtener Recomendaciones"):
+            if peliculas or contexto:
+                payload = {
+                    "peliculas": [p.strip() for p in peliculas.split(",")] if peliculas else None,
+                    "contexto": contexto if contexto else None
+                }
+                response = requests.post(f"{API_URL}/recomendacion", json=payload)
+
+                if response.status_code == 200:
+                    st.success("¡Aquí están tus recomendaciones!")
+                    st.write(response.json()["respuesta"])
                 else:
-                    st.warning("Debes ingresar al menos una película o un contexto.")
+                    st.error("Error al obtener recomendaciones")
+            else:
+                st.warning("Debes ingresar al menos una película o un contexto.")
 
     elif option == "trivia":
         st.subheader("🎥 Trivia de Cine y Series")
