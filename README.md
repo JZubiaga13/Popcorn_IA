@@ -1,4 +1,4 @@
-# POPCORN_AI
+# POPCORN_IA
 # Recomendador de Películas & Trivia de Cine/Series con IA
 
 **Popcorn AI** es una plataforma basada en IA generativa que ofrece:

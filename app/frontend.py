@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 
 # Configurar la página con icono y título
-st.set_page_config(page_title="Popcorn IA", page_icon="🍿", layout="centered")
+st.set_page_config(page_title="PopcornIA", page_icon="🍿", layout="centered")
 
 # Definir la URL base de la API
 API_URL = "http://127.0.0.1:8000"
@@ -44,8 +44,8 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # Encabezado con HTML
-st.markdown("<h1 class='title'>🍿 Popcorn IA</h1>", unsafe_allow_html=True)
-st.markdown("<p class='subtitle'>La herramienta para decidir que película ver y desafiar tu conocimiento sobre la pequeña y gran pantalla</p>", unsafe_allow_html=True)
+st.markdown("<h1 class='title'>🍿 PopcornIA</h1>", unsafe_allow_html=True)
+st.markdown("<p class='subtitle'>La herramienta que utiliza Inteligencia Artificial para recomendarte películas para cualquier ocasión</p>", unsafe_allow_html=True)
 
 # Contenedor para los botones de selección
 st.markdown("<div class='button-container'>", unsafe_allow_html=True)
@@ -102,6 +102,7 @@ if "option" in st.session_state:
     elif option == "trivia":
         st.subheader("🎥 Trivia de Cine y Series")
         st.info("🔜 Próximamente... 🚀")
+
 
 
     # VERSION ANTIGUA

@@ -1,0 +1,6 @@
+__pycache__/
+.ppytest_cache/
+.git
+*.pyc
+*.pyo
+*.pyd
