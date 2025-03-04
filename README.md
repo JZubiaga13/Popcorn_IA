@@ -1,115 +1,138 @@
-# POPCORN_IA
-# Recomendador de Películas & Trivia de Cine/Series con IA
+# 🎬 **Popcorn-IA** 🍿
 
-**Popcorn AI** es una plataforma basada en IA generativa que ofrece:
-- Un **Recomendador de Películas**, que sugiere títulos similares según los gustos del usuario.
-- Un **Trivia de Cine y Series**, donde los usuarios pueden responder preguntas con cuatro opciones.
+*"¿Alguna vez has pasado más tiempo eligiendo qué ver que viendo la película? Entonces, esto es para ti."*
 
-Desarrollado con **FastAPI, OpenAI, AWS y Docker**.
+## 🎭 **¿Qué es Popcorn-IA?**
 
----
+**Popcorn-IA** es un recomendador de películas inteligente que utiliza **Inteligencia Artificial y Procesamiento del Lenguaje Natural (NLP)** para sugerirte películas según **tus gustos o el contexto en el que te encuentres**.\
+🔹 ¿Buscas una peli para ver con amigos? 🎉\
+🔹 ¿Algo inspirador como *Interestelar*? 🚀\
+🔹 ¿O quizás un thriller tipo *Joker*? 🎭
 
-## 🚀 Características
-✅ **Recomendador de Películas**: Introduce varias películas y obtén recomendaciones similares.  
-✅ **Trivia de Cine y Series**: Preguntas generadas con IA y opciones de respuesta.  
-✅ **Base de Datos en AWS**: Registro de consultas, respuestas y recomendaciones.  
-✅ **Visualización en Web**: Interfaz HTML o Streamlit.  
-✅ **Dockerizado y Desplegable**: Contenedor listo para implementación.  
+Solo dinos lo que te gusta o el ambiente en el que te encuentras, y **Popcorn-IA** hará el resto.
 
 ---
 
-## 📂 Estructura del Proyecto
-```
-📁 popcorn_ai/
-│── 📁 app/                 # Código de la aplicación
-│   │── 📄 main.py          # API con FastAPI
-│   │── 📄 models.py        # Integración con OpenAI
-│   │── 📄 database.py      # Conexión con PostgreSQL en AWS
-│   │── 📄 schemas.py       # Esquema de datos (Pydantic)
-│   │── 📄 frontend.py      # (Si se usa Streamlit)
-│── 📁 templates/           # HTML (Si no se usa Streamlit)
-│   │── 📄 index.html       # Página principal
-│   │── 📄 trivia.html      # Trivia UI
-│   │── 📄 recomendador.html # Recomendador UI
-│── 📁 static/              # Archivos CSS, JS, imágenes
-│── 📁 tests/               # Pruebas unitarias
-│── 📄 Dockerfile           # Dockerización
-│── 📄 requirements.txt     # Dependencias
-│── 📄 README.md            # Documentación del proyecto
-```
+## 📚 **Estructura del Proyecto**
 
----
+Popcorn_IA/
+│── app/
+│   ├── __init__.py             # Inicialización del módulo
+│   ├── frontend.py             # Interfaz Streamlit
+│   ├── popcorn.py              # API con FastAPI
+│
+│── tests/
+│   ├── pytest_cache/           # Caché de pytest
+│   ├── pytest.ini              # Configuración de pytest
+│   ├── test_popcorn.py         # Tests automatizados
+│
+│── .dockerignore               # Archivos ignorados por Docker
+│── .gitignore                  # Archivos ignorados en Git
+│── Dockerfile                  # Configuración de Docker
+│── README.md                   # Documentación del proyecto
+│── requirements.txt             # Dependencias del proyecto
 
-## 🛠 Instalación y Configuración
-### 1️⃣ Clonar el repositorio
+
+## 🚀 **Instalación y Ejecución**
+
+### 🔹 **Opción 1: Ejecutar con Docker** (recomendada)
+
+Si quieres usar **Popcorn-IA** sin instalar dependencias manualmente:
+
 ```bash
-git clone https://github.com/tu_usuario/popcorn_ai.git
-cd popcorn_ai
+docker pull juanzubiaga/popcornia:latest
+docker run -p 8000:8000 -p 8501:8501 juanzubiaga/popcornia:latest
 ```
 
-### 2️⃣ Crear entorno virtual e instalar dependencias
+Luego accede a:\
+🔗 **API:** `http://127.0.0.1:8000/docs`\
+🔗 **Interfaz Web:** `http://127.0.0.1:8501`
+
+### 🔹 **Opción 2: Ejecutar localmente**
+
+1️⃣ **Clonar el repositorio**
+
 ```bash
-python -m venv venv
-source venv/bin/activate  # Linux/Mac
-venv\Scripts\activate  # Windows
+git clone https://github.com/tu_usuario/Popcorn-IA.git
+cd Popcorn-IA
+```
+
+2️⃣ **Configurar las variables de entorno**\
+Renombra `.env.example` a `.env` y completa los valores necesarios:
+
+```ini
+user=tu_usuario_mysql
+password_db=tu_password_mysql
+Database_URL=tu_host_mysql
+cohere_api=tu_api_key_cohere
+```
+
+3️⃣ **Instalar dependencias**
+
+```bash
 pip install -r requirements.txt
 ```
 
-### 3️⃣ Configurar variables de entorno
-Crear un archivo **.env** con las credenciales de OpenAI y AWS:
-```env
-OPENAI_API_KEY=tu_clave_de_openai
-DATABASE_URL=postgresql://usuario:contraseña@tu-rds.amazonaws.com/dbname
-```
+4️⃣ **Ejecutar el backend y la interfaz**
 
-### 4️⃣ Ejecutar la aplicación
 ```bash
-uvicorn app.main:app --reload
+uvicorn app.popcorn:app --host 0.0.0.0 --port 8000 --reload  # API FastAPI
+streamlit run app/frontend.py  # Interfaz Web
 ```
-Acceder en: `http://127.0.0.1:8000/docs` 📜
 
 ---
 
-## 🐳 Dockerización
-### 1️⃣ Construir y ejecutar la imagen Docker
+## 🛋 **Dependencias (requirements.txt)**
+
+Este proyecto usa las siguientes librerías:
+
+```
+fastapi
+uvicorn
+pydantic
+cohere
+langchain
+langchain-cohere
+streamlit
+pytest
+pymysql
+python-dotenv
+```
+
+Para instalarlas manualmente:
+
 ```bash
-docker build -t popcorn_ai .
-docker run -p 8000:8000 popcorn_ai
+pip install -r requirements.txt
 ```
 
-### 2️⃣ Subir imagen a DockerHub
+---
+
+## 🧪 **Pruebas**
+
+Para ejecutar los tests con **pytest**:
+
 ```bash
-docker tag popcorn_ai tu_usuario/popcorn_ai
-docker push tu_usuario/popcorn_ai
+pytest tests/
 ```
 
 ---
 
-## ☁️ Despliegue en AWS
-- **Base de Datos:** PostgreSQL en AWS RDS.
-- **Servidor:** Opcionalmente, desplegar en EC2 o servicios como Railway.app.
+Porque al igual que **Tony Stark confiaba en J.A.R.V.I.S.**, o **Neo en Morfeo**, Popcorn-IA te ayuda a elegir sin caer en la parálisis por análisis.
 
 ---
 
-## 📜 Endpoints Principales
-| Método | Endpoint        | Descripción |
-|---------|----------------|-------------|
-| `POST`  | `/recommend`   | Recomendador de películas |
-| `GET`   | `/trivia`      | Generador de preguntas de trivia |
-| `POST`  | `/save_interaction` | Guarda consultas y respuestas |
-| `POST`  | `/save_trivia` | Guarda preguntas en BD |
+## 🎯 **Futuro Desarrollo**
+
+📌 **Mejora de recomendaciones** con modelos avanzados de IA.\
+📌 **Implementación de Trivia de Cine y Series.**\
+📌 **Despliegue en la nube para acceso global.**
 
 ---
 
-## 📝 Contribuciones
-1. **Fork** este repositorio.
-2. Crea una rama: `git checkout -b feature-nueva`.
-3. Sube tus cambios: `git push origin feature-nueva`.
-4. Abre un Pull Request.
+## 🐝 **Licencia**
 
----
+Este proyecto es de código abierto bajo la licencia **MIT**.
 
-## 📌 Autor
-**[Tu Nombre]** - [Tu Usuario de GitHub]  
-💡 Inspirado en la IA aplicada al entretenimiento 🎬📺
+
+*"No importa la película que elijas, lo importante es compartirla con alguien."* 🍿
 
