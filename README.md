@@ -17,20 +17,20 @@ Solo dinos lo que te gusta o el ambiente en el que te encuentras, y **Popcorn-IA
 
 Popcorn_IA/
 │── app/   
-│   ├── __init__.py             # Inicialización del módulo   
-│   ├── frontend.py             # Interfaz Streamlit   
-│   ├── popcorn.py              # API con FastAPI   
+│   ├── __init__.py  –           # Inicialización del módulo   
+│   ├── frontend.py  –           # Interfaz Streamlit   
+│   ├── popcorn.py  –            # API con FastAPI   
 │   
 │── tests/   
-│   ├── pytest_cache/           # Caché de pytest   
-│   ├── pytest.ini              # Configuración de pytest   
-│   ├── test_popcorn.py         # Tests automatizados   
+│   ├── pytest_cache/  –          # Caché de pytest   
+│   ├── pytest.ini  –             # Configuración de pytest   
+│   ├── test_popcorn.py  –        # Tests automatizados   
 │   
-│── .dockerignore               # Archivos ignorados por Docker   
-│── .gitignore                  # Archivos ignorados en Git   
-│── Dockerfile                  # Configuración de Docker   
-│── README.md                   # Documentación del proyecto   
-│── requirements.txt             # Dependencias del proyecto   
+│── .dockerignore  –              # Archivos ignorados por Docker   
+│── .gitignore  –                # Archivos ignorados en Git   
+│── Dockerfile  –                # Configuración de Docker   
+│── README.md  –                 # Documentación del proyecto   
+│── requirements.txt  –            # Dependencias del proyecto   
 
 
 ## 🚀 **Instalación y Ejecución**
