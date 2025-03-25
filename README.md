@@ -53,7 +53,7 @@ Luego accede a:\
 1️⃣ **Clonar el repositorio**
 
 ```bash
-git clone https://github.com/tu_usuario/Popcorn-IA.git
+git clone https://github.com/jotazubiaga/Popcorn-IA.git
 cd Popcorn-IA
 ```
 
