@@ -133,6 +133,5 @@ Porque al igual que **Tony Stark confiaba en J.A.R.V.I.S.**, o **Neo en Morfeo**
 
 Este proyecto es de código abierto bajo la licencia **MIT**.
 
-
 *"No importa la película que elijas, lo importante es compartirla con alguien."* 🍿
 
